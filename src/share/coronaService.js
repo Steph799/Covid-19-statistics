@@ -7,7 +7,7 @@ export const getCountries = async (endpoint) => {
     method: 'GET',
     url: `${url.GENERAL_INFO}${endpoint}`,
     headers: {
-      'x-rapidapi-key': MY_API_KEY,
+      'x-rapidapi-key': MY_API_KEY, //here you put your API key
       'x-rapidapi-host': 'covid-193.p.rapidapi.com',
     },
   };
@@ -24,7 +24,7 @@ export const getTotalNumber = async () => {
     method: 'GET',
     url: url.TOTAL_DEATH,
     headers: {
-      'x-rapidapi-key': MY_API_KEY,
+      'x-rapidapi-key': MY_API_KEY, //here you put your API key
       'x-rapidapi-host': 'covid-19-world-data-by-zt.p.rapidapi.com',
     },
   };

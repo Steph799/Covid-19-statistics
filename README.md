@@ -1,9 +1,9 @@
-# Covid-19 statistics is a react app that collects live data about the pandemic around the world
+# Covid-19 statistics is a react app that presents data about the pandemic around the world, using Rapid Api
 
-The project uses Axios to do API calls to RapidApi and presents the important information (in quantity) about the Covid-19
+The project uses Axios to do API calls and presents in diagrams the information (in quantity) about the Covid-19
 (deaths, actives, criticals, recovered...) in each country and the whole world in general.
 
-for the design, I used the libraries "React-chartjs-2" and "Material-ui" 
+For the design, I used the libraries "React-chartjs-2" and "Material-ui" 
 
 
 

@@ -25,7 +25,7 @@ function App() {
     const countries = await getCountries('countries');
     setCountries(countries);
   }, []);
-
+ 
   return (
     <div className="App">
       <h1 style={{ marginTop: 0 }}>Covid-19, live statistics</h1>

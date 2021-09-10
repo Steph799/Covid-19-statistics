@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MY_API_KEY } from './RapidToken';
+// import { MY_API_KEY } from './RapidToken.js';
 import * as url from './url';
 
 export const getCountries = async (endpoint) => {
@@ -7,7 +7,7 @@ export const getCountries = async (endpoint) => {
     method: 'GET',
     url: `${url.GENERAL_INFO}${endpoint}`,
     headers: {
-      'x-rapidapi-key': MY_API_KEY, //here you put your API key
+      'x-rapidapi-key': process.env.REACT_APP_API_KEY, //here you put your API key
       'x-rapidapi-host': 'covid-193.p.rapidapi.com',
     },
   };
@@ -24,11 +24,12 @@ export const getTotalNumber = async () => {
     method: 'GET',
     url: url.TOTAL_DEATH,
     headers: {
-      'x-rapidapi-key': MY_API_KEY, //here you put your API key
+      'x-rapidapi-key': process.env.REACT_APP_API_KEY, //here you put your API key
       'x-rapidapi-host': 'covid-19-world-data-by-zt.p.rapidapi.com',
     },
   };
   try {
+     console.log(process.env);
     const { data } = await axios.request(options);
     return data.data[0];
   } catch (error) {

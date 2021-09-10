@@ -5,6 +5,8 @@ The project uses Axios to do API calls and presents in diagrams the information 
 
 For the design, I used the libraries "React-chartjs-2" and "Material-ui" 
 
+# Don't forget to replace the API key to yours (otherwise, it won't work)
+
 
 
 

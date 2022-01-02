@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { MY_API_KEY } from './RapidToken.js';
 import * as url from './url';
 
 export const getCountries = async (endpoint) => {
@@ -29,7 +28,6 @@ export const getTotalNumber = async () => {
     },
   };
   try {
-     console.log(process.env);
     const { data } = await axios.request(options);
     return data.data[0];
   } catch (error) {

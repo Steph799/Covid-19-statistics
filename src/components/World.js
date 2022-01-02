@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import MyDonutChart from './MyDonutChart';
 import { getTotalNumber } from '../share/coronaService';
+
 function World() {
   const [worldData, setWorldData] = useState(0);
 
-  useEffect(async () => {
-    const Total = await getTotalNumber();
-    setWorldData(Total);
-  }, []);
-
   useEffect(() => {
-    
-    return () => {
-        console.log('unmount world');
+    async function fetchMyApi(){
+      const Total = await getTotalNumber();
+      setWorldData(Total);
     }
-  }, [])
+    fetchMyApi();
+  }, []);
 
   return (
     <div>

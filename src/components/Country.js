@@ -8,22 +8,21 @@ function Country({ countries }) {
   const [country, setCountry] = useState(null);
   const [countryData, setCountryData] = useState({});
 
-  useEffect(async () => {
-    if (country) {
-      const statistics = await getCountries('statistics');
-      const chosenCountry = statistics.find(
-        (element) => element.country === country
-      );
-      setCountryData(chosenCountry);
+  useEffect(() => {
+    let unmounted=false
+
+    async function fetchMyApi(){
+      if (country) {
+        const statistics = await getCountries('statistics');
+        const chosenCountry = statistics.find((element) => element.country === country);
+        setCountryData(chosenCountry);
+      }
     }
+    if (!unmounted) fetchMyApi();
+  
+    return () => {unmounted=true};
   }, [country]);
 
-  useEffect(() => {
-    
-    return () => {
-       console.log('unmount country');
-    }
-  }, [])
 
   return (
     <div>
@@ -37,9 +36,7 @@ function Country({ countries }) {
         renderInput={(params) => (
           <TextField {...params} label="Select a country" variant="outlined" />
         )}
-        onChange={(event, newInputValue) => {
-          setCountry(newInputValue);
-        }}
+        onChange={(event, newInputValue) => setCountry(newInputValue)}
       />
       {country ? (
         <div>

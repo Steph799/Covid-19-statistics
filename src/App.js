@@ -8,12 +8,9 @@ import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
- 
   const [toggleStatistic, setToggleStatistic] = useState(false);
- const history = useHistory();
-  let toggleContent = toggleStatistic
-    ? 'Check counts in a specific country'
-    : ' Check Total counts in the world';
+  const history = useHistory();
+  const toggleContent = toggleStatistic ? 'Check counts in a specific country' : ' Check Total counts in the world';
 
   const ToggleContent = () => {
     setToggleStatistic(!toggleStatistic);
@@ -21,28 +18,32 @@ function App() {
     history.push(`/${url}`);
   };
 
-  useEffect(async () => {
-    const countries = await getCountries('countries');
-    setCountries(countries);
+  useEffect(() => {
+    async function fetchCountries(){
+      const countries = await getCountries('countries');
+      setCountries(countries);
+    }
+    fetchCountries()
   }, []);
- 
+
   return (
     <div className="App">
       <h1 style={{ marginTop: 0 }}>Covid-19, live statistics</h1>
 
       <Button variant="contained" color="primary" onClick={ToggleContent}>
         {toggleContent}
-      </Button>   
-        <Switch>
-          <Route
-            path="/country"
-            render={() => <Country countries={countries} />}
-          />
-          <Route path="/world" component={World} />
-          <Route path="/">
-            <Redirect to="/country" />
-          </Route>
-        </Switch>
+      </Button>
+      
+      <Switch>
+        <Route
+          path="/country"
+          render={() => <Country countries={countries} />}
+        />
+        <Route path="/world" component={World} />
+        <Route path="/">
+          <Redirect to="/country" />
+        </Route>
+      </Switch>
     </div>
   );
 }

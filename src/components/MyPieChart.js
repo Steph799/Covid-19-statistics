@@ -8,6 +8,7 @@ function MyPieChart({ data }) {
    }
    return true;
  }
+ 
   return (
     <div>
       {!isEmpty() ? (
